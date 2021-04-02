@@ -237,29 +237,48 @@ ORDER BY count DESC;
 --DELIVERABLE 2
 --Retrieve columns from Employees table
 SELECT emp_no, first_name, last_name, birth_date
---INTO employees_retrieved --create a new table
+INTO main_data_employees --create a new table
 FROM employees
 
 --retrieve dates from dept employee
-SELECT from_date, to_date
---INTO dates --create a new table
+SELECT from_date, to_date, emp_no
+INTO dates --create a new table
 FROM dept_employees
 
 --retrieve title
-SELECT title
---INTO title_employees --create a new table
+SELECT title, emp_no
+INTO title_employees --create a new table
 FROM titles
 
 --compile previous retrieves in one table
-SELECT er.emp_no, er.first_name, er.last_name, d.from_date, d.to_date, te.title
---INTO mentorship_elibigility
-FROM employees_retrieved AS er
-INNER JOIN titles_retrieved AS tr
-ON (er.emp_no = tr.emp_no)
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')--filter on birth_date
+SELECT DISTINCT ON (emp_no) mde.emp_no, mde.first_name, mde.last_name, mde.birth_date, d.from_date, d.to_date, te.title
+INTO mentorship_elegibility
+FROM main_data_employees AS mde
+INNER JOIN dates AS d
+ON (mde.emp_no = d.emp_no)
+INNER JOIN title_employees AS te
+ON (d.emp_no = te.emp_no)
+WHERE (birth_date BETWEEN '1965-01-01' AND '1965-12-31')--filter on to_date
 ORDER BY emp_no ASC;--order by employee number
 
-SELECT DISTINCT ON (emp_no) emp_no, first_name, last_name, title
-INTO unique_titles
-FROM retirement_titles
-ORDER BY emp_no, first_name DESC;
+
+
+
+
+
+--Join the Employees and the Department Employee tables on the primary key.
+SELECT e.emp_no, e.birth_date, e.first_name, e.last_name, e.gender, e.hire_date, de.dept_no, de.from_date, de.to_date
+INTO employees_deptemployees_by_key
+FROM employees AS e
+INNER JOIN dept_employees AS de
+ON (e.emp_no = de.emp_no)
+
+--Join the Employees and the Titles tables on the primary key.
+SELECT e.emp_no, e.birth_date, e.first_name, e.last_name, e.gender, e.hire_date, t.title, t.from_date, t.to_date
+--INTO employees_titles_by_key
+FROM employees AS e
+INNER JOIN titles AS t
+ON (e.emp_no = t.emp_no)
+
+
+
