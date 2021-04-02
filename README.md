@@ -9,8 +9,10 @@ The key results are the following:
 
 - Plenty of employees, over the years, took different roles in the company which talks about the high professional development in Pewlett-Hackard. This is definitely an incentive for newcomer employees.
 - Reviewing the unique titles of the employees to retire, 'Engineers' has the highest count which talks about two things:
-      - 1. The scope of the company demands experienced, well-trained, operative workforce, and
-      - 2. Human Resources will undergo an important task to balance the hiring of new engineers in order to not unbalance the company's productivity.
+
+      - The scope of the company demands experienced, well-trained, operative workforce, and
+      - Human Resources will undergo an important task to balance the hiring of new engineers in order to not unbalance the company's productivity.
+     
 - More than 1,500 employees are elegible for retirement. The high number invites us to recommend the company to enforce a well structured retirement program/plan in order to not affect the activity needed for production/productivity.
 - The number of titles is highly unproportional. There are a lot of operational titles about to retire and very few in place a manager title. It is recommended to review the distribution of those titles in order to ensure that supervision matches supervisee.
 
